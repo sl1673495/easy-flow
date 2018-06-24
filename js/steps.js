@@ -3,7 +3,7 @@
 
     var api = null
 
-    var commenUtil = {
+    var commonUtil = {
         isTypeOf: function (obj, type) {
             switch (type) {
                 case 'object':
@@ -34,14 +34,18 @@
 
         replacePx: function (attr) {
             return parseInt(attr.replace('px'))
+        },
+        removeNode: function(node) {
+        	node.parentNode.removeChild(node)
         }
     }
 
-    var isTypeOf = commenUtil.isTypeOf,
-        isEmptyNode = commenUtil.isEmptyNode,
-        getMuiltWrapper = commenUtil.getMuiltWrapper,
-        parseDom = commenUtil.parseDom,
-        replacePx = commenUtil.replacePx
+    var isTypeOf = commonUtil.isTypeOf,
+        isEmptyNode = commonUtil.isEmptyNode,
+        getMuiltWrapper = commonUtil.getMuiltWrapper,
+        parseDom = commonUtil.parseDom,
+        replacePx = commonUtil.replacePx,
+        removeNode = commonUtil.removeNode
 
     // 生成流程盒子的方法
     var initStepBox = function (node) {
@@ -294,7 +298,7 @@
                 drawDotsAndLine(el.children[0], true)
             },
             refresh: function () {
-                el.children[0].remove()
+            	removeNode(el.children[0])
                 this.init()
             }
         }
