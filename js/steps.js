@@ -5,16 +5,7 @@
 
     var commonUtil = {
         isTypeOf: function (obj, type) {
-            switch (type) {
-                case 'object':
-                    return Object.prototype.toString.call(obj) === '[object Object]'
-                    break
-                case 'array':
-                    return Object.prototype.toString.call(obj) === '[object Array]'
-                    break
-                default:
-                    return false
-            }
+            return Object.prototype.toString.call(obj) === '[object ' + type + ']'
         },
         // 空节点
         isEmptyNode: function (node) {
@@ -112,7 +103,7 @@
                 if (!next) {
                     node.next = []
                 }
-                if (isTypeOf(next, 'object')) {
+                if (isTypeOf(next, 'Object')) {
                     node.next = [next]
                 }
                 node.next.push({
@@ -141,7 +132,7 @@
     }
 
     var drawBoxes = function (wrapper, currentNode) {
-        if (isTypeOf(currentNode, 'object')) {
+        if (isTypeOf(currentNode, 'Object')) {
             // 如果当前对象text为空则不继续渲染
             if (isEmptyNode(currentNode)) return
             var stepWrapper = parseDom(
@@ -153,7 +144,7 @@
             wrapper.appendChild(stepWrapper)
             currentNode.next && drawBoxes.apply(this, [stepWrapper, currentNode.next])
         }
-        if (isTypeOf(currentNode, 'array')) {
+        if (isTypeOf(currentNode, 'Array')) {
             // 全部为空节点
             var allEmpty = currentNode.every(function (node) {
                 return isEmptyNode(node)
