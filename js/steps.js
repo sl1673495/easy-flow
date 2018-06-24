@@ -262,7 +262,7 @@
 		}
 		// 到达树的底端	
 		if(!nextWrapper) return false
-		// 单对单盒子
+			// 单对单盒子
 		var singleTarget = nextWrapper.className.indexOf('step-wrapper__muilt') === -1
 
 		if(singleTarget) {
@@ -286,13 +286,14 @@
 		var balance = option.balance
 		api = {
 			init: function() {
-				el.className += ' step-wrapper'
 				var fragment = document.createDocumentFragment()
-					// 根据数组绘制boxes
-				drawBoxes.apply(this, [fragment, data])
+				el.classList.add('step-wrapper')
+				// 根据数组绘制boxes
+				drawBoxes(fragment, data)
 				el.appendChild(fragment)
+				// 是否调整高度一致
 				balance && calcMuiltWrapperHeight()
-					// 递归绘制连线
+				// 递归绘制连线
 				drawDotsAndLine(el.children[0], true)
 			},
 			refresh: function() {
