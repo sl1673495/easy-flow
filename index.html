@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="css/base.css" />
 		<link rel="stylesheet" href="css/steps.css" />
 		<link rel="stylesheet" href="font/iconfont.css" />
-		
+
 	</head>
 
 	<body>
@@ -17,65 +17,41 @@
 	</body>
 	<script src="./js/steps.js"></script>
 	<script>
-		var step = Steps(document.querySelector('#steps'), {
-			data: {
-				text: '进入商城',
+		var data = {
+			text: '进入商城',
+			next: {
+				text: '挑选物品',
 				next: {
-					text: '挑选物品',
-					next: {
-						text: '查看参数',
+					text: '查看参数',
+					next: [{
+						text: '觉得满意',
 						next: [{
-							text: '觉得满意',
+							text: '立即购买',
 							next: [{
-								text: '立即购买',
-								next: [{
-									text: '觉得好用',
-									next: {
-										text: '下次再来'
-									}
-								}, {
-									text: '觉得一般'
-								}, {
-									text: '觉得不好用'
-								}]
+								text: '觉得好用',
+								next: {
+									text: '下次再来'
+								}
 							}, {
-								text: '以后再买',
-								next: {
-									text: '又来光顾了',
-									next: [{
-										text: '买了'
-									}]
-								}
+								text: '觉得一般'
+							}, {
+								text: '觉得不好用'
 							}]
 						}, {
-							text: '觉得一般',
-							next: [{
-								text: '思前想后',
+							text: '以后再买',
+							next: {
+								text: '又来光顾了',
 								next: [{
-									text: '回家睡觉'
-								}, {
-									text: '勉强接受',
-									next: [{
-										text: '还是买了'
-									}, {
-										text: '走人'
-									}, ]
-								}, {
-									text: '犹豫',
-									next: [{
-										text: '还是买了'
-									}, {
-										text: '走人'
-									}, ]
+									text: '买了'
 								}]
-							}]
-						}, {
-							text: '觉得垃圾',
+							}
+						}]
+					}, {
+						text: '觉得一般',
+						next: [{
+							text: '思前想后',
 							next: [{
-								text: '当场走人',
-								next: {
-									text: '回家睡觉'
-								}
+								text: '回家睡觉'
 							}, {
 								text: '勉强接受',
 								next: [{
@@ -92,9 +68,34 @@
 								}, ]
 							}]
 						}]
-					}
+					}, {
+						text: '觉得垃圾',
+						next: [{
+							text: '当场走人',
+							next: {
+								text: '回家睡觉'
+							}
+						}, {
+							text: '勉强接受',
+							next: [{
+								text: '还是买了'
+							}, {
+								text: '走人'
+							}, ]
+						}, {
+							text: '犹豫',
+							next: [{
+								text: '还是买了'
+							}, {
+								text: '走人'
+							}, ]
+						}]
+					}]
 				}
 			}
+		}
+		var step = Steps(document.querySelector('#steps'), {
+			data: data
 		})
 		step.init()
 	</script>

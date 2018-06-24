@@ -168,8 +168,7 @@
     // muiltWrapper内如果里面还有muiltWrapper, 把其他子div的高度调为和最大高度一致
     var calcMuiltWrapperHeight = function (startWrapper) {
         // 可以指定从某个wrapper节点开始调整
-        var queryEl = startWrapper || el
-        var muiltWrappers = queryEl.querySelectorAll('.step-wrapper__muilt')
+        var muiltWrappers = startWrapper.querySelectorAll('.step-wrapper__muilt')
         var needCalcQueue = []
         // 倒序循环 从最内存开始计算高度
         for (var i = muiltWrappers.length - 1; i >= 0; i--) {
@@ -290,7 +289,7 @@
                 drawBoxes(fragment, data)
                 el.appendChild(fragment)
                 // 是否调整高度一致
-                balance && calcMuiltWrapperHeight()
+                balance && calcMuiltWrapperHeight(el)
                 // 递归绘制连线
                 drawDotsAndLine(el.children[0], true)
             },
