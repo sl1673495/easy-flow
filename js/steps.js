@@ -173,7 +173,6 @@
     var calcMuiltWrapperHeight = function (startWrapper) {
         // 可以指定从某个wrapper节点开始调整
         var muiltWrappers = startWrapper.querySelectorAll('.step-wrapper__muilt')
-        var needCalcQueue = []
         // 倒序循环 从最内存开始计算高度
         for (var i = muiltWrappers.length - 1; i >= 0; i--) {
             var currentMuiltWrapper = muiltWrappers[i]
